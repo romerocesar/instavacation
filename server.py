@@ -6,10 +6,15 @@ import pandas as pd
 
 
 @hug.get()
-def vacation_spot(username: str):
-    posts = get_posts(username)
+def vacation_spot():
+    posts = get_posts("username")
     results = compute_results(posts)
-    return results
+    response = hug.Response("blah")
+    response.set_header('Access-Control-Allow-Origin', '*')
+    response.set_header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.set_header('Access-Control-Allow-Headers', 'Content-Type')
+    print("test123")
+    return response
 
 
 def get_posts(username):

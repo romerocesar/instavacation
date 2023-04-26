@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>instavacation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+</head>
+<body>
+
+<!-- Your content goes here -->
+<h1>InstaVacations</h1>
+
+<!-- The above form looks like this -->
+<form>
+    <div class="row">
+        <div class="six columns">
+            <label for="foobar">Account @</label>
+            <input class="u-full-width" type="email" placeholder="@nature" id="foobar">
+        </div>
+        <div class="six columns">
+            <label for="exampleRecipientInput">Reason for contacting</label>
+            <select class="u-full-width" id="exampleRecipientInput">
+                <option value="followers">Followers</option>
+                <option value="following">Following</option>
+                <option value="following_and_follows">Followers and Following</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="five columns">&nbsp;</div>
+        <div class="two columns"><input class="button-primary" type="submit" value="Submit"></div>
+        <div class="five columns"></div>
+    </div>
+</form>
+<script>
+    $(document).ready(function(){
+    $.get("http://localhost:8000/vacation_spot",function(data){
+        console.log(data)
+    });
+    });
+</script>
+
+<!-- Always wrap checkbox and radio inputs in a label and use a <span class="label-body"> inside of it -->
+
+<!-- Note: The class .u-full-width is just a utility class shorthand for width: 100% -->
+
+</body>
+</html>
