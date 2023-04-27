@@ -2,19 +2,18 @@ import random
 import string
 
 import hug
+from hug.middleware import CORSMiddleware
 import pandas as pd
 
+api = hug.API(__name__)
+api.http.add_middleware(CORSMiddleware(api))
 
-@hug.get()
-def vacation_spot():
+
+@hug.get('/vacation', api=api)
+def vacation():
     posts = get_posts("username")
     results = compute_results(posts)
-    response = hug.Response("blah")
-    response.set_header('Access-Control-Allow-Origin', '*')
-    response.set_header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    response.set_header('Access-Control-Allow-Headers', 'Content-Type')
-    print("test123")
-    return response
+    return results
 
 
 def get_posts(username):
